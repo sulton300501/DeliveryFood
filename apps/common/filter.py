@@ -1,15 +1,12 @@
-# from django_filters import Filter , FilterSet
-# from common.models import models
-
-
+# from common.models.model import City
+# from django_filters import Filter, FilterSet
 
 
 # class M2MFilter(Filter):
-#     def __init__(self , *args , **kwargs):
-#         super().__init__( *args , **kwargs)
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
 
-
-#     def filter(self , qs , value):
+#     def filter(self, qs, value):
 #         if not value:
 #             return qs
 #         values = value.split(",")
@@ -19,9 +16,9 @@
 #         return qs
 
 
-# class FaqFilter(M2MFilter):
+# class FaqFilter(FilterSet):
 #     tags = M2MFilter()
 
 #     class Meta:
-#         model = models
+#         model = City
 #         fields = ("tags",)
