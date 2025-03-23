@@ -2,6 +2,7 @@ import os
 
 import environ
 from celery import Celery
+
 from django.conf import settings
 
 env = environ.Env()

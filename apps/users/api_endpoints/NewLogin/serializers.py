@@ -1,9 +1,10 @@
 import random
 
+from rest_framework import serializers
+
 from django.contrib.auth import get_user_model
 from django.core.cache import cache
 from django.core.exceptions import ValidationError
-from rest_framework import serializers
 
 User = get_user_model()
 

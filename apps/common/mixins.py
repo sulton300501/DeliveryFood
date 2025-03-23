@@ -1,5 +1,6 @@
-from django.db.models import ImageField
 from image_uploader_widget.widgets import ImageUploaderWidget
+
+from django.db.models import ImageField
 
 
 class ImageFieldMixin:

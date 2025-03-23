@@ -19,10 +19,33 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="City",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("created_at", models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana")),
-                ("update_at", models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana")),
-                ("slug", models.SlugField(blank=True, max_length=255, null=True, unique=True, verbose_name="slug")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana"),
+                ),
+                (
+                    "update_at",
+                    models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana"),
+                ),
+                (
+                    "slug",
+                    models.SlugField(
+                        blank=True,
+                        max_length=255,
+                        null=True,
+                        unique=True,
+                        verbose_name="slug",
+                    ),
+                ),
                 (
                     "slug_from_lang",
                     models.CharField(
@@ -34,8 +57,14 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("name", models.CharField(max_length=256, verbose_name="Shahar nomi")),
-                ("name_uz", models.CharField(max_length=256, null=True, verbose_name="Shahar nomi")),
-                ("name_ru", models.CharField(max_length=256, null=True, verbose_name="Shahar nomi")),
+                (
+                    "name_uz",
+                    models.CharField(max_length=256, null=True, verbose_name="Shahar nomi"),
+                ),
+                (
+                    "name_ru",
+                    models.CharField(max_length=256, null=True, verbose_name="Shahar nomi"),
+                ),
             ],
             options={
                 "verbose_name": "Shahar",
@@ -45,10 +74,33 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Address",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("created_at", models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana")),
-                ("update_at", models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana")),
-                ("slug", models.SlugField(blank=True, max_length=255, null=True, unique=True, verbose_name="slug")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana"),
+                ),
+                (
+                    "update_at",
+                    models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana"),
+                ),
+                (
+                    "slug",
+                    models.SlugField(
+                        blank=True,
+                        max_length=255,
+                        null=True,
+                        unique=True,
+                        verbose_name="slug",
+                    ),
+                ),
                 (
                     "slug_from_lang",
                     models.CharField(
@@ -60,8 +112,14 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("name", models.CharField(max_length=256, verbose_name="Viloyat")),
-                ("name_uz", models.CharField(max_length=256, null=True, verbose_name="Viloyat")),
-                ("name_ru", models.CharField(max_length=256, null=True, verbose_name="Viloyat")),
+                (
+                    "name_uz",
+                    models.CharField(max_length=256, null=True, verbose_name="Viloyat"),
+                ),
+                (
+                    "name_ru",
+                    models.CharField(max_length=256, null=True, verbose_name="Viloyat"),
+                ),
                 (
                     "phone_number",
                     apps.common.models.fields.PhoneField(
@@ -75,13 +133,24 @@ class Migration(migrations.Migration):
                         verbose_name="Asosiy telefon raqam",
                     ),
                 ),
-                ("detail_address", models.CharField(max_length=256, verbose_name="Ko'cha nomi")),
-                ("detail_address_uz", models.CharField(max_length=256, null=True, verbose_name="Ko'cha nomi")),
-                ("detail_address_ru", models.CharField(max_length=256, null=True, verbose_name="Ko'cha nomi")),
+                (
+                    "detail_address",
+                    models.CharField(max_length=256, verbose_name="Ko'cha nomi"),
+                ),
+                (
+                    "detail_address_uz",
+                    models.CharField(max_length=256, null=True, verbose_name="Ko'cha nomi"),
+                ),
+                (
+                    "detail_address_ru",
+                    models.CharField(max_length=256, null=True, verbose_name="Ko'cha nomi"),
+                ),
                 (
                     "city",
                     models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE, to="common.city", verbose_name="Shahar nomi"
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="common.city",
+                        verbose_name="Shahar nomi",
                     ),
                 ),
             ],
@@ -94,10 +163,33 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="District",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("created_at", models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana")),
-                ("update_at", models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana")),
-                ("slug", models.SlugField(blank=True, max_length=255, null=True, unique=True, verbose_name="slug")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana"),
+                ),
+                (
+                    "update_at",
+                    models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana"),
+                ),
+                (
+                    "slug",
+                    models.SlugField(
+                        blank=True,
+                        max_length=255,
+                        null=True,
+                        unique=True,
+                        verbose_name="slug",
+                    ),
+                ),
                 (
                     "slug_from_lang",
                     models.CharField(
@@ -109,8 +201,14 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("name", models.CharField(max_length=256, verbose_name="Tuman nomi")),
-                ("name_uz", models.CharField(max_length=256, null=True, verbose_name="Tuman nomi")),
-                ("name_ru", models.CharField(max_length=256, null=True, verbose_name="Tuman nomi")),
+                (
+                    "name_uz",
+                    models.CharField(max_length=256, null=True, verbose_name="Tuman nomi"),
+                ),
+                (
+                    "name_ru",
+                    models.CharField(max_length=256, null=True, verbose_name="Tuman nomi"),
+                ),
                 (
                     "city",
                     models.ForeignKey(

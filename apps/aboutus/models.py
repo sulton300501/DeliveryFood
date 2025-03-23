@@ -1,10 +1,11 @@
 from ckeditor_uploader.fields import RichTextUploadingField
+from sorl.thumbnail import ImageField
+
 from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.template.defaultfilters import truncatechars
 from django.utils.translation import gettext_lazy as _
-from sorl.thumbnail import ImageField
 
 from apps.common.models.base import ActiveModel, BaseModel, MultiLangSlugify
 from apps.common.models.fields import OrderField
@@ -47,35 +48,51 @@ class Restourant(BaseModel, MultiLangSlugify, ActiveModel):
     class Meta:
         ordering = ("id",)
         verbose_name = _("Restourant")
-        verbose_name_plural = _("4. Restourantlar")
+        verbose_name_plural = _("1. Restourantlar")
 
 
 class Reviews(BaseModel):
-    rating = models.FloatField(_("Reyting"), default=0, validators=[MinValueValidator(1.0), MaxValueValidator(5.0)])
+    rating = models.FloatField(
+        _("Reyting"),
+        default=0,
+        validators=[MinValueValidator(1.0), MaxValueValidator(5.0)],
+    )
     comment = RichTextUploadingField(verbose_name=_("Komentariya"))
     user = models.ForeignKey(
-        "users.User", on_delete=models.CASCADE, related_name="reviews", verbose_name=_("Foydalanuvchi")
+        "users.User",
+        on_delete=models.CASCADE,
+        related_name="reviews",
+        verbose_name=_("Foydalanuvchi"),
     )
     restourant = models.ForeignKey(
-        "Restourant", on_delete=models.CASCADE, verbose_name=_("Restoran"), related_name="restourant"
+        "Restourant",
+        on_delete=models.CASCADE,
+        verbose_name=_("Restoran"),
+        related_name="restourant",
     )
 
     class Meta:
         verbose_name = _("Fikr-mulohaza")
-        verbose_name_plural = _("1. Fikr-mulohazalar")
+        verbose_name_plural = _("2. Fikr-mulohazalar")
 
 
 class FavouriteRestaurant(BaseModel):
     user = models.ForeignKey(
-        "users.User", on_delete=models.CASCADE, verbose_name=_("Foydalanuvchi"), related_name="favourite"
+        "users.User",
+        on_delete=models.CASCADE,
+        verbose_name=_("Foydalanuvchi"),
+        related_name="favourite",
     )
     restourant = models.ForeignKey(
-        "Restourant", on_delete=models.CASCADE, verbose_name=_("Foydalanuvchi"), related_name="favouriteuser"
+        "Restourant",
+        on_delete=models.CASCADE,
+        verbose_name=_("Foydalanuvchi"),
+        related_name="favouriteuser",
     )
 
     class Meta:
         verbose_name = _("Sevimli restoran")
-        verbose_name_plural = _("2. Sevimli restoranlar")
+        verbose_name_plural = _("3. Sevimli restoranlar")
 
 
 class CategoryRestourant(MultiLangSlugify, BaseModel):
@@ -85,4 +102,4 @@ class CategoryRestourant(MultiLangSlugify, BaseModel):
 
     class Meta:
         verbose_name = _("Kategoriya")
-        verbose_name_plural = _("3. Kategoriyalar")
+        verbose_name_plural = _("4. Kategoriyalar")

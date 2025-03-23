@@ -1,7 +1,8 @@
-from django.contrib.auth import get_user_model
-from django.core.cache import cache
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
+
+from django.contrib.auth import get_user_model
+from django.core.cache import cache
 
 from .utils import get_tokens_for_user
 

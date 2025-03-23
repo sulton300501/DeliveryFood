@@ -1,6 +1,7 @@
-from django.core.files.images import get_image_dimensions
 from rest_framework import serializers
 from sorl.thumbnail import get_thumbnail
+
+from django.core.files.images import get_image_dimensions
 
 from apps.common.models.model import Address, City, District
 

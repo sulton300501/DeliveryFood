@@ -1,9 +1,10 @@
+from unidecode import unidecode
+
 from django.conf import settings
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
-from unidecode import unidecode
 
 from .fields import ActiveField
 from .managers import ActiveManager

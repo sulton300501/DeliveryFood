@@ -24,10 +24,33 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="CategoryRestourant",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("created_at", models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana")),
-                ("update_at", models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana")),
-                ("slug", models.SlugField(blank=True, max_length=255, null=True, unique=True, verbose_name="slug")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana"),
+                ),
+                (
+                    "update_at",
+                    models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana"),
+                ),
+                (
+                    "slug",
+                    models.SlugField(
+                        blank=True,
+                        max_length=255,
+                        null=True,
+                        unique=True,
+                        verbose_name="slug",
+                    ),
+                ),
                 (
                     "slug_from_lang",
                     models.CharField(
@@ -42,7 +65,9 @@ class Migration(migrations.Migration):
                 (
                     "order",
                     apps.common.models.fields.OrderField(
-                        default=1, validators=[django.core.validators.MinValueValidator(1)], verbose_name="tartib raqam"
+                        default=1,
+                        validators=[django.core.validators.MinValueValidator(1)],
+                        verbose_name="tartib raqam",
                     ),
                 ),
             ],
@@ -54,10 +79,33 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Restourant",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("created_at", models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana")),
-                ("update_at", models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana")),
-                ("slug", models.SlugField(blank=True, max_length=255, null=True, unique=True, verbose_name="slug")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana"),
+                ),
+                (
+                    "update_at",
+                    models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana"),
+                ),
+                (
+                    "slug",
+                    models.SlugField(
+                        blank=True,
+                        max_length=255,
+                        null=True,
+                        unique=True,
+                        verbose_name="slug",
+                    ),
+                ),
                 (
                     "slug_from_lang",
                     models.CharField(
@@ -68,33 +116,56 @@ class Migration(migrations.Migration):
                         verbose_name="slug tilini tanlash",
                     ),
                 ),
-                ("active", apps.common.models.fields.ActiveField(default=False, verbose_name="active")),
-                ("name", models.CharField(max_length=255, verbose_name="Restourant nomi")),
+                (
+                    "active",
+                    apps.common.models.fields.ActiveField(default=False, verbose_name="active"),
+                ),
+                (
+                    "name",
+                    models.CharField(max_length=255, verbose_name="Restourant nomi"),
+                ),
                 ("description", models.TextField(verbose_name="Tavsif")),
                 (
                     "avatar",
                     sorl.thumbnail.fields.ImageField(
-                        upload_to=apps.common.utils.generate_upload_path, verbose_name="Rasm"
+                        upload_to=apps.common.utils.generate_upload_path,
+                        verbose_name="Rasm",
                     ),
                 ),
                 (
                     "cover_image",
                     sorl.thumbnail.fields.ImageField(
-                        upload_to=apps.common.utils.generate_upload_path, verbose_name="Asosiy rasm"
+                        upload_to=apps.common.utils.generate_upload_path,
+                        verbose_name="Asosiy rasm",
                     ),
                 ),
-                ("location_url", models.URLField(max_length=300, verbose_name="Joylashuvi")),
-                ("latitude", models.CharField(blank=True, max_length=55, null=True, verbose_name="kenglik")),
-                ("longitude", models.CharField(blank=True, max_length=55, null=True, verbose_name="uzunlik")),
+                (
+                    "location_url",
+                    models.URLField(max_length=300, verbose_name="Joylashuvi"),
+                ),
+                (
+                    "latitude",
+                    models.CharField(blank=True, max_length=55, null=True, verbose_name="kenglik"),
+                ),
+                (
+                    "longitude",
+                    models.CharField(blank=True, max_length=55, null=True, verbose_name="uzunlik"),
+                ),
                 ("orders_count", models.IntegerField(verbose_name="Buyurtmalar soni")),
                 (
                     "working_hourse",
-                    models.CharField(help_text="Masalan: 09:00 - 20:00", max_length=50, verbose_name="Ish vaqti"),
+                    models.CharField(
+                        help_text="Masalan: 09:00 - 20:00",
+                        max_length=50,
+                        verbose_name="Ish vaqti",
+                    ),
                 ),
                 (
                     "address_id",
                     models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE, to="common.address", verbose_name="Manzil"
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="common.address",
+                        verbose_name="Manzil",
                     ),
                 ),
                 (
@@ -115,9 +186,23 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="FavouriteRestaurant",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("created_at", models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana")),
-                ("update_at", models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana"),
+                ),
+                (
+                    "update_at",
+                    models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana"),
+                ),
                 (
                     "user",
                     models.ForeignKey(
@@ -145,9 +230,23 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Reviews",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("created_at", models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana")),
-                ("update_at", models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana"),
+                ),
+                (
+                    "update_at",
+                    models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana"),
+                ),
                 (
                     "rating",
                     models.FloatField(
@@ -159,7 +258,10 @@ class Migration(migrations.Migration):
                         verbose_name="Reyting",
                     ),
                 ),
-                ("comment", ckeditor_uploader.fields.RichTextUploadingField(verbose_name="Komentariya")),
+                (
+                    "comment",
+                    ckeditor_uploader.fields.RichTextUploadingField(verbose_name="Komentariya"),
+                ),
                 (
                     "restourant",
                     models.ForeignKey(

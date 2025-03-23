@@ -25,9 +25,20 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="User",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("password", models.CharField(max_length=128, verbose_name="password")),
-                ("last_login", models.DateTimeField(blank=True, null=True, verbose_name="last login")),
+                (
+                    "last_login",
+                    models.DateTimeField(blank=True, null=True, verbose_name="last login"),
+                ),
                 (
                     "username",
                     models.CharField(
@@ -39,8 +50,14 @@ class Migration(migrations.Migration):
                         verbose_name="username",
                     ),
                 ),
-                ("first_name", models.CharField(blank=True, max_length=150, verbose_name="first name")),
-                ("last_name", models.CharField(blank=True, max_length=150, verbose_name="last name")),
+                (
+                    "first_name",
+                    models.CharField(blank=True, max_length=150, verbose_name="first name"),
+                ),
+                (
+                    "last_name",
+                    models.CharField(blank=True, max_length=150, verbose_name="last name"),
+                ),
                 (
                     "is_active",
                     models.BooleanField(
@@ -49,13 +66,34 @@ class Migration(migrations.Migration):
                         verbose_name="active",
                     ),
                 ),
-                ("date_joined", models.DateTimeField(default=django.utils.timezone.now, verbose_name="date joined")),
-                ("created_at", models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana")),
-                ("update_at", models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana")),
-                ("active", apps.common.models.fields.ActiveField(default=False, verbose_name="active")),
-                ("full_name", models.CharField(blank=True, max_length=255, null=True, verbose_name="Toliq ism")),
-                ("full_name_uz", models.CharField(blank=True, max_length=255, null=True, verbose_name="Toliq ism")),
-                ("full_name_ru", models.CharField(blank=True, max_length=255, null=True, verbose_name="Toliq ism")),
+                (
+                    "date_joined",
+                    models.DateTimeField(default=django.utils.timezone.now, verbose_name="date joined"),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Kiritilgan sana"),
+                ),
+                (
+                    "update_at",
+                    models.DateTimeField(auto_now=True, verbose_name="O'zgartrilgan sana"),
+                ),
+                (
+                    "active",
+                    apps.common.models.fields.ActiveField(default=False, verbose_name="active"),
+                ),
+                (
+                    "full_name",
+                    models.CharField(blank=True, max_length=255, null=True, verbose_name="Toliq ism"),
+                ),
+                (
+                    "full_name_uz",
+                    models.CharField(blank=True, max_length=255, null=True, verbose_name="Toliq ism"),
+                ),
+                (
+                    "full_name_ru",
+                    models.CharField(blank=True, max_length=255, null=True, verbose_name="Toliq ism"),
+                ),
                 (
                     "phone_number",
                     apps.common.models.fields.PhoneField(
@@ -69,18 +107,27 @@ class Migration(migrations.Migration):
                         verbose_name="Foydalanuvchi raqami",
                     ),
                 ),
-                ("email", models.EmailField(max_length=40, verbose_name="Email pochta")),
+                (
+                    "email",
+                    models.EmailField(max_length=40, verbose_name="Email pochta"),
+                ),
                 (
                     "avatar",
                     sorl.thumbnail.fields.ImageField(
-                        upload_to=apps.common.utils.generate_upload_path, verbose_name="Rasm"
+                        upload_to=apps.common.utils.generate_upload_path,
+                        verbose_name="Rasm",
                     ),
                 ),
-                ("birthdate", models.DateTimeField(blank=True, null=True, verbose_name="Tugilgan sana")),
+                (
+                    "birthdate",
+                    models.DateTimeField(blank=True, null=True, verbose_name="Tugilgan sana"),
+                ),
                 (
                     "gender",
                     models.CharField(
-                        choices=[("Male", "Erkak"), ("Female", "Ayol")], max_length=255, verbose_name="Jinsi"
+                        choices=[("Male", "Erkak"), ("Female", "Ayol")],
+                        max_length=255,
+                        verbose_name="Jinsi",
                     ),
                 ),
                 ("is_superuser", models.BooleanField(default=False)),

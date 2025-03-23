@@ -1,9 +1,10 @@
-from django.shortcuts import render  # noqa
 from rest_framework import generics
 
-from apps.common.models import model
+from django.shortcuts import render  # noqa
 
 from . import serializers
+
+from apps.common.models import model
 
 # Create your views here.
 

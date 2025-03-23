@@ -1,8 +1,9 @@
+from sorl.thumbnail import ImageField
+
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from sorl.thumbnail import ImageField
 
 from apps.common.models.base import ActiveModel, BaseModel
 from apps.common.models.fields import PhoneField
@@ -21,7 +22,11 @@ class User(AbstractUser, BaseModel, ActiveModel):
     phone_number = PhoneField(verbose_name=_("Foydalanuvchi raqami"))
     email = models.EmailField(verbose_name=_("Email pochta"), max_length=40, null=False, blank=False)
     address_id = models.ForeignKey(
-        Address, on_delete=models.SET_NULL, verbose_name=_("Yashash manzili"), null=True, blank=True
+        Address,
+        on_delete=models.SET_NULL,
+        verbose_name=_("Yashash manzili"),
+        null=True,
+        blank=True,
     )
     avatar = ImageField(verbose_name=_("Rasm"), upload_to=generate_upload_path)
     birthdate = models.DateTimeField(_("Tugilgan sana"), null=True, blank=True)
