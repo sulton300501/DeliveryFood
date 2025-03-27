@@ -8,6 +8,7 @@ from .scheme import swagger_urlpatterns
 
 urlpatterns = [
     path("i18n/", include("django.conf.urls.i18n")),
+    path("ckeditor/", include("ckeditor_uploader.urls")),
 ]
 
 urlpatterns += i18n_patterns(path("admin/", admin.site.urls))

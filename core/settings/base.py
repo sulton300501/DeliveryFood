@@ -360,6 +360,11 @@ MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 
+API_KEY = env.str("API_KEY")
+CHAT_ID = env.str("CHAT_ID")
+
+HOST = env.str("HOST")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

@@ -1,9 +1,14 @@
+import logging
+
+import requests
 from ckeditor_uploader.fields import RichTextUploadingField
 from sorl.thumbnail import ImageField
 
 from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 from django.template.defaultfilters import truncatechars
 from django.utils.translation import gettext_lazy as _
 
@@ -83,6 +88,25 @@ class Reviews(BaseModel):
     class Meta:
         verbose_name = _("Fikr-mulohaza")
         verbose_name_plural = _("2. Fikr-mulohazalar")
+
+
+@receiver(pre_save, sender=Reviews)
+def save_reviews_comment(sender, instance, *args, **kwargs):
+    try:
+        text = (
+            "Kelib tushgan xabar!\n\n"
+            f"*Ariza turi:* Biz bilan bog'lanish bo'limi\n"
+            f"*Foydalanuvchi Id:* {instance.user.id}\n"
+            f"*Restourant Id:* {instance.restourant.id}\n"
+            f"*Xabarnoma:* {instance.comment}\n"
+        )
+
+        url = f"https://api.telegram.org/bot{settings.API_KEY}" + "/sendMessage"
+
+        requests.get(url, data={"chat_id": settings.CHAT_ID, "text": text, "parse_mode": "Markdown"})
+
+    except Exception as e:
+        logging.error(str(e))
 
 
 class FavouriteRestaurant(BaseModel):

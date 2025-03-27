@@ -32,6 +32,7 @@ class RestourantALLSerializer(serializers.ModelSerializer):
     thumbnail_image = ThumbnailImageSerializer(source="cover_image", read_only=True)
     avatar = serializers.ImageField(write_only=True)
     cover_image = serializers.ImageField(write_only=True)
+    reviews = serializers.SerializerMethodField()
 
     class Meta:
         model = Restourant
@@ -48,7 +49,13 @@ class RestourantALLSerializer(serializers.ModelSerializer):
             "latitude",
             "longitude",
             "working_hourse",
+            "reviews",
         )
+
+    def get_reviews(self, obj):
+        reviews_option = Reviews.objects.filter(restourant=obj.id)
+        reviews = ReviewsSerializer(reviews_option, many=True).data
+        return reviews
 
 
 class ReviewsSerializer(serializers.ModelSerializer):
