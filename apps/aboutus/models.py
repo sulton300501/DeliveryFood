@@ -7,6 +7,7 @@ from django.db import models
 from django.template.defaultfilters import truncatechars
 from django.utils.translation import gettext_lazy as _
 
+from apps.common.helpers import get_long_lat
 from apps.common.models.base import ActiveModel, BaseModel, MultiLangSlugify
 from apps.common.models.fields import OrderField
 from apps.common.utils import generate_upload_path
@@ -22,9 +23,17 @@ class Restourant(BaseModel, MultiLangSlugify, ActiveModel):
     location_url = models.URLField(max_length=300, verbose_name=_("Joylashuvi"))
     latitude = models.CharField(max_length=55, verbose_name=_("kenglik"), blank=True, null=True)
     longitude = models.CharField(max_length=55, verbose_name=_("uzunlik"), blank=True, null=True)
-    orders_count = models.IntegerField(_("Buyurtmalar soni"))
+    orders_count = models.IntegerField(_("Buyurtmalar soni"), null=True, blank=True)
     working_hourse = models.CharField(_("Ish vaqti"), max_length=50, help_text="Masalan: 09:00 - 20:00")
     SLUG_FORM_FIELD = "name"  # type: ignore # noqa:F401
+
+    def save(self, *args, **kwargs):
+        if self.location_url:
+            long_lat, status = get_long_lat(self.location_url)
+            if status and "long" in long_lat and "lat" in long_lat:
+                self.longitude = float(long_lat["long"])
+                self.latitude = float(long_lat["lat"])
+        super(Restourant, self).save(*args, **kwargs)
 
     @property
     def get_avatar(self):
@@ -103,3 +112,6 @@ class CategoryRestourant(MultiLangSlugify, BaseModel):
     class Meta:
         verbose_name = _("Kategoriya")
         verbose_name_plural = _("4. Kategoriyalar")
+
+    def __str__(self):
+        return self.name

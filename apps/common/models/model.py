@@ -1,12 +1,12 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from apps.common.models.base import BaseModel, MultiLangSlugify
+from apps.common.models.base import BaseModel
 from apps.common.models.fields import PhoneField
 
 
 # common -  feedback ,
-class City(BaseModel, MultiLangSlugify):
+class City(BaseModel):
     name = models.CharField(_("Shahar nomi"), max_length=256)
 
     class Meta:
@@ -17,7 +17,7 @@ class City(BaseModel, MultiLangSlugify):
         return self.name
 
 
-class District(BaseModel, MultiLangSlugify):
+class District(BaseModel):
     name = models.CharField(_("Tuman nomi"), max_length=256)
     city = models.ForeignKey("City", on_delete=models.CASCADE, verbose_name=_("Shahar nomi"), max_length=256)
 
@@ -29,7 +29,7 @@ class District(BaseModel, MultiLangSlugify):
         return self.name
 
 
-class Address(BaseModel, MultiLangSlugify):
+class Address(BaseModel):
     name = models.CharField(verbose_name=_("Viloyat"), max_length=256)
     phone_number = PhoneField(_("Asosiy telefon raqam"))
     city = models.ForeignKey("City", verbose_name=("Shahar nomi"), on_delete=models.CASCADE)

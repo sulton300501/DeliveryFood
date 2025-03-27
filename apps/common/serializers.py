@@ -11,12 +11,13 @@ class ThumbnailImageSerializer(serializers.Serializer):
         try:
             width, height = get_image_dimensions(image)
             request = self.context["request"]
+
             return {
                 "large": request.build_absolute_uri(
-                    get_thumbnail(image, f"{int(width // 1.5)} x {int(height // 1.5)}", quality=99).url
+                    get_thumbnail(image, f"{int(width // 1.5)}x{int(height // 1.5)}", quality=99).url
                 ),
                 "medium": request.build_absolute_uri(
-                    get_thumbnail(image, f"{int(width // 2)}x{int(height //2)}", quality=99).url
+                    get_thumbnail(image, f"{int(width // 2)}x{int(height // 2)}", quality=99).url
                 ),
                 "small": request.build_absolute_uri(
                     get_thumbnail(image, f"{int(width // 3)}x{int(height // 3)}", quality=99).url
