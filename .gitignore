@@ -177,3 +177,6 @@ cython_debug/
 .pypirc
 media/
 static/
+static/drf-yasg/
+static/ckeditor/
+static/rest_framework/css/bootstrap.min.css.map
