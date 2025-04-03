@@ -25,4 +25,8 @@ urlpatterns += [
     path("api/v1/", include("apps.users.urls")),
     path("api/v1/", include("apps.common.urls")),
     path("api/v1/", include("apps.aboutus.urls")),
+    path("api/v1/", include("apps.main.urls")),
+    path("api/v1/", include("apps.services.urls")),
+    path("api/v1/", include("apps.payments.urls")),
+    path("api/v1/", include("apps.notifications.urls")),
 ]

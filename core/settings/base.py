@@ -50,6 +50,10 @@ CUSTOM_APPS = [
     "apps.users",
     "apps.common",
     "apps.aboutus",
+    "apps.main",
+    "apps.services",
+    "apps.payments",
+    "apps.notifications",
 ]
 
 

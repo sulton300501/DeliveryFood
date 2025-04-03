@@ -176,7 +176,7 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 media/
-static/
+static
 static/drf-yasg/
 static/ckeditor/
 static/rest_framework/css/bootstrap.min.css.map
