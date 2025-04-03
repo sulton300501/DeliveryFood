@@ -33,8 +33,8 @@ class Topping(BaseModel):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Topping narxi")
 
     class Meta:
-        verbose_name = "Qo'shimcha"
-        verbose_name_plural = "Qo'shimchalar"
+        verbose_name = _("Qo'shimcha")
+        verbose_name_plural = _("2. Qo'shimchalar")
 
     def __str__(self):
         return self.name
@@ -52,7 +52,7 @@ class OrderDetails(BaseModel):
 
     class Meta:
         verbose_name = _("Buyurtma tafsiloti")
-        verbose_name_plural = _("Buyurtma tafsilotlari")
+        verbose_name_plural = _("3. Buyurtma tafsilotlari")
 
     def __str__(self):
         return f"{self.food} - {self.quantity} dona"
@@ -80,7 +80,7 @@ class Order(BaseModel):
 
     class Meta:
         verbose_name = _("Buyurtma")
-        verbose_name_plural = _("Buyurtmalar")
+        verbose_name_plural = _("4.Buyurtmalar")
 
     def __str__(self):
         return f"Buyurtma #{self.id} - {self.user}"
