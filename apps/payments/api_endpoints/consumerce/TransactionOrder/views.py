@@ -13,17 +13,21 @@ class OrderTransactionAPIView(GenericAPIView):
     serializer_class = OrderTransactionSerializer
     permission_classes = (permissions.IsAuthenticated,)
 
-    def post(self, request, pk):
+    # 👉 Swagger uchun "fake" queryset
+    def get_queryset(self):
+        if getattr(self, "swagger_fake_view", False):
+            return Order.objects.none()
+        return super().get_queryset()
 
+    def post(self, request, pk):
         try:
             order = Order.objects.get(pk=pk)
         except Order.DoesNotExist:
-            return Response({"error": "Course does not found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response({"error": "Order not found"}, status=status.HTTP_404_NOT_FOUND)
 
         data = self.serializer_class(data=request.data)
-
         if not data.is_valid():
-            return Response({"message": "Error"})
+            return Response({"message": "Error"}, status=status.HTTP_400_BAD_REQUEST)
 
         user = request.user
         card_id = data.validated_data.get("card_id")
@@ -32,8 +36,7 @@ class OrderTransactionAPIView(GenericAPIView):
 
         try:
             card = UserCard.objects.get(cardId=card_id, user=user, is_active=True)
-        except Exception as e:
-            print(e)
+        except UserCard.DoesNotExist:
             return Response({"error": "Card not found"}, status=status.HTTP_404_NOT_FOUND)
 
         transaction = Transaction.objects.create(
