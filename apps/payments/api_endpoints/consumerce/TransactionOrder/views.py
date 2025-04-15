@@ -27,7 +27,7 @@ class OrderTransactionAPIView(GenericAPIView):
 
         data = self.serializer_class(data=request.data)
         if not data.is_valid():
-            return Response({"message": "Error"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(data.errors, status=status.HTTP_400_BAD_REQUEST)
 
         user = request.user
         card_id = data.validated_data.get("card_id")
@@ -58,9 +58,13 @@ class OrderTransactionAPIView(GenericAPIView):
         card.save()
 
         try:
-            restaurant = Restourant.objects.get(pk=order.restaurant_id)
+            restaurant = Restourant.objects.get(pk=order.restourant_id)
+
+            if restaurant.orders_count is None:
+                restaurant.orders_count = 0
             restaurant.orders_count += 1
             restaurant.save()
+
         except Restourant.DoesNotExist:
             return Response({"error": "Restaurant not found"}, status=status.HTTP_404_NOT_FOUND)
 

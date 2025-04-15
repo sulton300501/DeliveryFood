@@ -19,7 +19,7 @@ class UserCard(models.Model):
     card_number = models.CharField(max_length=16)
     expire_date = models.CharField(max_length=4)
     cvv = models.CharField(max_length=10, null=True, blank=True)
-    balance = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+    balance = models.DecimalField(max_digits=12, decimal_places=2, default=500)
     is_active = models.BooleanField(default=False)
     is_deleted = models.BooleanField(default=False)
     token = models.UUIDField(null=True)

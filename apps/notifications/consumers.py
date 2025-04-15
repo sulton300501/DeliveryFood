@@ -18,7 +18,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.channel_layer.group_discard(self.room_name, self.channel_name)
 
     async def receive(self, text_data):
-        text_data_json = json.loads(text_data)
+        text_data_json = json.loads(text_data)  # stringga aylantradi
         message = text_data_json
         print(message)
 

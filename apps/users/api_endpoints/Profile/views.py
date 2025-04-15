@@ -32,5 +32,15 @@ class ProfileAPIView(GenericAPIView):
         request.user.delete()
         return Response({"message": "User profile deleted successfully"})
 
+    @swagger_auto_schema(tags=["users"])
+    def put(self, request, *args, **kwargs):
+        user = request.user
+        serializer = self.get_serializer(instance=user, data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 __all__ = ["ProfileAPIView"]
