@@ -2,6 +2,7 @@ from smtplib import SMTPRecipientsRefused
 
 import environ
 from celery import shared_task
+from rest_framework import status
 
 from django.core.mail import send_mail
 
@@ -37,3 +38,5 @@ def send_reviews_task(id, user, message, from_email, recipient_list):
             )
         except SMTPRecipientsRefused:
             pass
+
+    return {"status_code": status.HTTP_200_OK}

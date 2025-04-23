@@ -131,6 +131,15 @@ CACHES = {
     }
 }
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [f"{env.str('REDIS_URL', 'redis://127.0.0.1:6379/0')}"],  # Redis URL
+        },
+    },
+}
+
 
 CELERY_TIMEZONE = "Asia/Tashkent"
 CELERY_TASK_TRACK_STARTED = True

@@ -1,6 +1,6 @@
 from rest_framework import filters, generics
 from rest_framework.pagination import LimitOffsetPagination
-from rest_framework.parsers import FormParser, MultiPartParser
+from rest_framework.parsers import FormParser, JSONParser, MultiPartParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -31,7 +31,7 @@ class SlugRetriewsAPIView(generics.RetrieveAPIView):
 class RestourantAPIView(generics.CreateAPIView):
     queryset = Restourant.objects.all()
     serializer_class = RestourantSerializer
-    parser_classes = (FormParser, MultiPartParser)
+    parser_classes = (JSONParser, FormParser, MultiPartParser)
 
     def get_queryset(self):
         return self.queryset.filter()

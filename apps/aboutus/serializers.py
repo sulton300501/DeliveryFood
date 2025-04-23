@@ -30,8 +30,8 @@ class RestourantSerializer(serializers.ModelSerializer):
 class RestourantALLSerializer(serializers.ModelSerializer):
     thumbnail_avatar = ThumbnailImageSerializer(source="avatar", read_only=True)
     thumbnail_image = ThumbnailImageSerializer(source="cover_image", read_only=True)
-    avatar = serializers.ImageField(write_only=True)
-    cover_image = serializers.ImageField(write_only=True)
+    avatar = serializers.ImageField(write_only=True, required=False)
+    cover_image = serializers.ImageField(write_only=True, required=False)
     reviews = serializers.SerializerMethodField()
 
     class Meta:
